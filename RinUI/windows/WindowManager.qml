@@ -27,7 +27,6 @@ Item {
         } else if (Qt.platform.os === "windows") {
         // 非使用PySide下的备用方案
         toggleMaximizeWindow(window)
-        return
         }
 
         toggleMaximizeWindow(window)
