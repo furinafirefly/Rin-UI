@@ -18,9 +18,16 @@ Item {
         if (!_isWinMgrInitialized()) {
             console.warn("WindowManager is not defined.")
         }
-        if (Qt.platform.os === "windows") {
-            WinEventManager.maximizeWindow(WinEventManager.getWindowId(window))
-            return  // 在win环境使用原生方法拖拽
+
+        // 检查WinEventManager是否存在
+        if (Qt.platform.os === "windows" && typeof WinEventManager !== "undefined") {
+        WinEventManager.maximizeWindow(WinEventManager.getWindowId(window))
+        return //理想情况下使用了PySide且拥有WinEventManager类
+
+        } else if (Qt.platform.os === "windows") {
+        // 非使用PySide下的备用方案
+        toggleMaximizeWindow(window)
+        return
         }
 
         toggleMaximizeWindow(window)
