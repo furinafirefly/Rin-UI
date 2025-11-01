@@ -23,11 +23,8 @@ Item {
         if (Qt.platform.os === "windows" && typeof WinEventManager !== "undefined") {
         WinEventManager.maximizeWindow(WinEventManager.getWindowId(window))
         return //理想情况下使用了PySide且拥有WinEventManager类
-
-        } else if (Qt.platform.os === "windows") {
-        // 非使用PySide下的备用方案
-        toggleMaximizeWindow(window)
         }
+
 
         toggleMaximizeWindow(window)
     }
